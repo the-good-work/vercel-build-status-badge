@@ -17,7 +17,7 @@
 }
 
 body {
-  padding: 20px;
+  @apply p-1;
 }
 
 input {

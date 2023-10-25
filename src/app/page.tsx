@@ -18,7 +18,7 @@ export default function Home() {
           onClick={() => {
             const id = document.getElementById("deployId");
             if (id !== null) {
-              r.push(`/badge/${(id as HTMLInputElement).value}`);
+              r.push(`/e/${(id as HTMLInputElement).value}`);
             }
           }}
         >
