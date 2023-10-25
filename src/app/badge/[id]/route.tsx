@@ -5,7 +5,7 @@ if (process.env.VC_REST_API_TOKEN === undefined) {
 }
 
 export async function GET(
-  _: NextResponse,
+  _: NextRequest,
   { params }: { params: { id: string } }
 ) {
   const dplId = params.id;
