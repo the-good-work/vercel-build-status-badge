@@ -1,6 +1,6 @@
 import { ImageResponse, NextRequest, NextResponse } from "next/server";
 
-if (process.env.VERCEL_TOKEN === undefined) {
+if (process.env.VC_REST_API_TOKEN === undefined) {
   throw Error("Vercel token needed for app to function");
 }
 
@@ -20,7 +20,7 @@ export async function GET(
       {
         method: "GET",
         headers: {
-          Authorization: `Bearer ${process.env.VERCEL_TOKEN}`,
+          Authorization: `Bearer ${process.env.VC_REST_API_TOKEN}`,
         },
       }
     );
