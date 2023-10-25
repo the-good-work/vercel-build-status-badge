@@ -35,8 +35,8 @@ export async function GET(
       return NextResponse.json({ error: "Not found" });
     }
     return new ImageResponse(ImageBuilder({ type: state }), {
-      width: 100,
-      height: 25,
+      width: 200,
+      height: 50,
     });
   } catch (err) {
     console.error(err);
@@ -51,22 +51,23 @@ const ImageBuilder = ({ type }: { type: VercelApiResponse["readyState"] }) => {
     <div
       style={{
         display: "flex",
-        padding: "5px 10px",
-        height: "25px",
+        padding: "10px 20px",
+        height: "50px",
         alignItems: "center",
-        gap: "10px",
-        fontSize: "12px",
-        fontWeight: "600",
+        gap: "20px",
+        fontSize: "24px",
+        fontWeight: "900",
         background: "#efefef",
-        borderRadius: "5px",
-        border: "1px solid #ddd",
+        borderRadius: "10px",
+        border: "2px solid #ddd",
         width: "100%",
       }}
     >
       <b
         style={{
-          width: "8px",
-          height: "8px",
+          width: "16px",
+          height: "16px",
+          borderRadius: "100%",
           backgroundColor:
             type === "QUEUED"
               ? "lightgrey"
@@ -82,7 +83,7 @@ const ImageBuilder = ({ type }: { type: VercelApiResponse["readyState"] }) => {
               ? "limegreen"
               : "white",
         }}
-      />{" "}
+      />
       {type}
     </div>
   );
@@ -92,112 +93,65 @@ type VercelApiResponse =
   | {
       build: {
         /** The keys of the environment variables that were assigned during the build phase. */
-
         env: string[];
       };
-
       builds?: { [key: string]: unknown }[];
-
       /** The flag saying if Vercel Connect configuration is used for builds */
-
       connectBuildsEnabled?: boolean;
-
       /** The ID of Vercel Connect configuration used for this deployment */
-
       connectConfigurationId?: string;
-
       /** The region where the deployment was first created */
-
       createdIn: string;
-
       /** The keys of the environment variables that were assigned during runtime */
-
       env: string[];
-
       /** An object used to configure your Serverless Functions */
-
       functions?: {
         [key: string]: {
           memory?: number;
-
           maxDuration?: number;
-
           runtime?: string;
-
           includeFiles?: string;
-
           excludeFiles?: string;
         };
       } | null;
-
       /** Vercel URL to inspect the deployment. */
-
       inspectorUrl: string | null;
-
       /** Is the deployment currently queued waiting for a Concurrent Build Slot to be available */
-
       isInConcurrentBuildsQueue: boolean;
-
       /** An object containing the deployment's metadata */
-
       meta: { [key: string]: string };
-
       /** An monorepo manager that was used for the deployment */
-
       monorepoManager?: string | null;
-
       /** The name of the project associated with the deployment at the time that the deployment was created */
-
       name: string;
-
       /** The unique ID of the user or team the deployment belongs to */
-
       ownerId: string;
-
       /** The pricing plan the deployment was made under */
-
       plan: "pro" | "enterprise" | "hobby" | "oss";
-
       /** The ID of the project the deployment is associated with */
-
       projectId: string;
-
       /** A list of routes objects used to rewrite paths to point towards other internal or external paths */
-
       routes:
         | (
             | {
                 src: string;
-
                 dest?: string;
-
                 headers?: { [key: string]: string };
-
                 methods?: string[];
-
                 continue?: boolean;
-
                 override?: boolean;
-
                 caseSensitive?: boolean;
-
                 check?: boolean;
-
                 important?: boolean;
-
                 status?: number;
-
                 has?: (
                   | {
                       type: "host";
-
                       value: string;
                     }
                   | {
                       type: "header" | "cookie" | "query";
-
                       key: string;
-
                       value?: string;
                     }
                 )[];
