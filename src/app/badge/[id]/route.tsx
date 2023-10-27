@@ -1,4 +1,3 @@
-"use client";
 import { ImageResponse, NextRequest, NextResponse } from "next/server";
 
 if (process.env.VC_REST_API_TOKEN === undefined) {
