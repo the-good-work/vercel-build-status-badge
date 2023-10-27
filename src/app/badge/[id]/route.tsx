@@ -24,6 +24,10 @@ export async function GET(
         headers: {
           Authorization: `Bearer ${process.env.VC_REST_API_TOKEN}`,
         },
+
+        next: {
+          revalidate: 2,
+        },
       }
     );
 
