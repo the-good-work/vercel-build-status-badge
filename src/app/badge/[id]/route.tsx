@@ -4,7 +4,8 @@ if (process.env.VC_REST_API_TOKEN === undefined) {
   throw Error("Vercel token needed for app to function");
 }
 
-export const revalidate = 5;
+export const revalidate = 0;
+export const dynamic = "force-dynamic";
 
 export async function GET(
   _: NextRequest,
@@ -26,7 +27,7 @@ export async function GET(
         },
 
         next: {
-          revalidate: 2,
+          revalidate: 0,
         },
       }
     );
